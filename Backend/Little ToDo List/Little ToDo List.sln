@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Little ToDo List.Application", "Little ToDo List.Application\Little ToDo List.Application.csproj", "{0EC2BD66-8A3C-4B13-B73C-AB0AE3BA9BBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application", "LittleToDoList.Application\LittleToDoList.Application.csproj", "{0EC2BD66-8A3C-4B13-B73C-AB0AE3BA9BBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

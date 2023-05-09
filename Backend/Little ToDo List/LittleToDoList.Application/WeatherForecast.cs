@@ -1,4 +1,4 @@
-namespace Little_ToDo_List.Application;
+namespace LittleToDoList.Application;
 
 public class WeatherForecast
 {
