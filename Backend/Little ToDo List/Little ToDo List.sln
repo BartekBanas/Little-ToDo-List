@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application", "LittleToDoList.Application\LittleToDoList.Application.csproj", "{0EC2BD66-8A3C-4B13-B73C-AB0AE3BA9BBB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LittleToDoList.Business", "LittleToDoList.Business", "{CE2A4F72-CC0C-454C-80EF-9898326D8138}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LittleToDoList.Application", "LittleToDoList.Application", "{FEECBC39-0BA7-4487-B26B-71A974B8B970}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LittleToDoList.Api", "LittleToDoList.Api", "{B214A776-B7D4-4664-ADA0-95D3C203FFF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LittleToDoList.Infrastructure", "LittleToDoList.Infrastructure", "{5085DD10-C89C-4B4D-938D-FCDEA85CF0DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
