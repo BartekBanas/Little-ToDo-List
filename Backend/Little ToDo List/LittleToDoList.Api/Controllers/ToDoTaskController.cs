@@ -17,4 +17,16 @@ public class ToDoTaskController
     {
         throw new NotImplementedException();
     }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateTask()
+    {
+        throw new NotImplementedException();
+    }
+
+    [HttpPut("{taskId:int}")]
+    public async Task<IActionResult> UpdateTask([FromRoute] int taskId)
+    {
+        throw new NotImplementedException();
+    }
 }
