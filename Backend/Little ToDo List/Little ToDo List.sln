@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LittleToDoList.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Api", "LittleToDoList.Api\LittleToDoList.Api.csproj", "{ECF5D546-8186-4489-A758-3BD49E407193}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Dto", "LittleToDoList.Api\LittleToDoList.Application.Dto\LittleToDoList.Application.Dto.csproj", "{048E78B3-40FC-4BBE-A0CF-4C249109CD71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Api.Dto", "LittleToDoList.Api\LittleToDoList.Api.Dto\LittleToDoList.Api.Dto.csproj", "{048E78B3-40FC-4BBE-A0CF-4C249109CD71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

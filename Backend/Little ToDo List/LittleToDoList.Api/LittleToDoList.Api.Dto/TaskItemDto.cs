@@ -1,4 +1,4 @@
-﻿namespace LittleToDoList.Application.Dto;
+﻿namespace LittleToDoList.Api.Dto;
 
 public class TaskItemDto
 {

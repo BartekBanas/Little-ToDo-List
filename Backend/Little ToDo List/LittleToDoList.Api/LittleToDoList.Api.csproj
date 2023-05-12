@@ -14,4 +14,10 @@
       <ProjectReference Include="..\LittleToDoList.Application\LittleToDoList.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="LittleToDoList.Api.Dto\TaskItemDto.cs">
+        <Link>LittleToDoList.Application.Dto\TaskItemDto.cs</Link>
+      </Compile>
+    </ItemGroup>
+
 </Project>
