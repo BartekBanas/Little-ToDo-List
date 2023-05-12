@@ -1,4 +1,4 @@
-﻿using LittleToDoList.Abstractions;
+﻿using LittleToDoList.Business.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 namespace LittleToDoList.Infrastructure.Repositories;

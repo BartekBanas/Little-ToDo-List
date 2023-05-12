@@ -1,4 +1,4 @@
-﻿namespace LittleToDoList.Abstractions;
+﻿namespace LittleToDoList.Business.Abstractions;
 
 public interface IRepository { }
 

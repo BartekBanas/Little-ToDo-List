@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\LittleToDoList.Abstractions\LittleToDoList.Abstractions.csproj" />
+      <ProjectReference Include="..\LittleToDoList.Business.Abstractions\LittleToDoList.Business.Abstractions.csproj" />
     </ItemGroup>
 
     <ItemGroup>

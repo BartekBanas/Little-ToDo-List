@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Api", "Littl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Infrastructure.Repositories", "LittleToDoList.Infrastructure.Repositories\LittleToDoList.Infrastructure.Repositories.csproj", "{7D513FD5-F01F-4EEF-8D1E-B119CE2C954E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Abstractions", "LittleToDoList.Abstractions\LittleToDoList.Abstractions.csproj", "{023211BB-76D5-4A18-9370-1570594602E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Business.Abstractions", "LittleToDoList.Business.Abstractions\LittleToDoList.Business.Abstractions.csproj", "{023211BB-76D5-4A18-9370-1570594602E7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Services", "LittleToDoList.Application.Services\LittleToDoList.Application.Services.csproj", "{052894EC-625D-4799-8E78-8BB507B4C384}"
 EndProject
