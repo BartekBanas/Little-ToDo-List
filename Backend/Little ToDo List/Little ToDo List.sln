@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LittleToDoList.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Api", "LittleToDoList.Api\LittleToDoList.Api.csproj", "{ECF5D546-8186-4489-A758-3BD49E407193}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Dto", "LittleToDoList.Api\LittleToDoList.Application.Dto\LittleToDoList.Application.Dto.csproj", "{048E78B3-40FC-4BBE-A0CF-4C249109CD71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +28,14 @@ Global
 		{ECF5D546-8186-4489-A758-3BD49E407193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECF5D546-8186-4489-A758-3BD49E407193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECF5D546-8186-4489-A758-3BD49E407193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048E78B3-40FC-4BBE-A0CF-4C249109CD71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048E78B3-40FC-4BBE-A0CF-4C249109CD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048E78B3-40FC-4BBE-A0CF-4C249109CD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048E78B3-40FC-4BBE-A0CF-4C249109CD71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ECF5D546-8186-4489-A758-3BD49E407193} = {B214A776-B7D4-4664-ADA0-95D3C203FFF7}
 		{0EC2BD66-8A3C-4B13-B73C-AB0AE3BA9BBB} = {FEECBC39-0BA7-4487-B26B-71A974B8B970}
+		{048E78B3-40FC-4BBE-A0CF-4C249109CD71} = {B214A776-B7D4-4664-ADA0-95D3C203FFF7}
 	EndGlobalSection
 EndGlobal
