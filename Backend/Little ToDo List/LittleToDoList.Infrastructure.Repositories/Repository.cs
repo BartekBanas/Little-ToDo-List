@@ -19,8 +19,31 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         _saveChangesAsyncDelegate = async () => { await dbContext.SaveChangesAsync(); };
     }
     
-    public Task<TEntity?> GetOneAsync(int id)
+    public virtual async Task<TEntity?> GetOneAsync(int id)
     {
-        throw new NotImplementedException();
+        var entity = await _dbSet.FindAsync(id);
+
+        return entity;
+    }
+
+    public virtual async Task<ICollection<TEntity>> GetAllAsync()
+    {
+        var entities = await _dbSet.ToListAsync();
+
+        return entities;
+    }
+    
+    public virtual async Task DeleteOneAsync(int keys)
+    {
+        var entity = await GetOneAsync(keys);
+
+        if (entity != null) _dbSet.Remove(entity);
+    }
+    
+    public virtual Task<TEntity> CreateOneAsync(TEntity entity)
+    {
+        _dbSet.Add(entity);
+
+        return Task.FromResult(entity);
     }
 }
