@@ -11,8 +11,6 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
     private readonly DbSet<TEntity> _dbSet;
     private readonly Func<Task> _saveChangesAsyncDelegate;
     
-    int asynchronization = 2;
-    
     public Repository(TDbContext dbContext)
     {
         _dbContext = dbContext;
