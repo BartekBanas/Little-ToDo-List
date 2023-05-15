@@ -11,6 +11,8 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
     private readonly DbSet<TEntity> _dbSet;
     private readonly Func<Task> _saveChangesAsyncDelegate;
     
+    int asynchronization = 2;
+    
     public Repository(TDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -40,10 +42,10 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         if (entity != null) _dbSet.Remove(entity);
     }
     
-    public virtual Task<TEntity> CreateOneAsync(TEntity entity)
+    public virtual async Task<TEntity> CreateOneAsync(TEntity entity)
     {
         _dbSet.Add(entity);
 
-        return Task.FromResult(entity);
+        return await Task.FromResult(entity);
     }
 }
