@@ -15,11 +15,11 @@ public class ToDoItemService
         _mapper = mapper;
     }
     
-    public async Task<TaskItem> GetTaskAsync(int taskId)
+    public async Task<TaskItem> GetTodoItemAsync(int todoItemId)
     {
-        var account = await _taskRepository.GetOneAsync(taskId);
+        var taskItem = await _taskRepository.GetOneAsync(todoItemId);
         
-        var dto = _mapper.Map<TaskItem>(account);
+        var dto = _mapper.Map<TaskItem>(taskItem);
         
         return dto;
     }
