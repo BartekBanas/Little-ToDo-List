@@ -1,4 +1,5 @@
 ﻿using LittleToDoList.Business.Abstractions;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace LittleToDoList.Infrastructure.Repositories;
@@ -10,10 +11,12 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
     private readonly DbContext _dbContext;
     private readonly DbSet<TEntity> _dbSet;
     private readonly Func<Task> _saveChangesAsyncDelegate;
-    
-    public Repository(TDbContext dbContext)
+    private readonly IMediator _mediator;
+
+    public Repository(TDbContext dbContext, IMediator mediator)
     {
         _dbContext = dbContext;
+        _mediator = mediator;
         _dbSet = _dbContext.Set<TEntity>();
 
         _saveChangesAsyncDelegate = async () => { await dbContext.SaveChangesAsync(); };
@@ -45,5 +48,12 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         _dbSet.Add(entity);
 
         return await Task.FromResult(entity);
+    }
+    
+    public virtual async Task SaveChangesAsync()
+    {
+        await _mediator.DispatchDomainEventsAsync(_dbContext);
+
+        await _saveChangesAsyncDelegate();
     }
 }

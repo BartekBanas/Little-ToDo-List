@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LittleToDoList.Api.Dto;
 using LittleToDoList.Business.Abstractions;
 using LittleToDoList.Business.Entities;
 
@@ -22,5 +23,21 @@ public class ToDoItemService
         var dto = _mapper.Map<TaskItem>(taskItem);
         
         return dto;
+    }
+
+    public async Task CreateTodoItem(TaskItemDto dto)
+    {
+        var newTodoTask = new TaskItem
+        {
+            Id = dto.Id,
+            Name = dto.Name,
+            CreationDate = dto.CreationDate,
+            CompletionDate = dto.CompletionDate,
+            Description = dto.Description,
+            IsDone = dto.IsDone
+        };
+
+        await _taskRepository.CreateOneAsync(newTodoTask);
+        
     }
 }
