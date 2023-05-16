@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Business.Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Business.Events", "LittleToDoList.Business.Events\LittleToDoList.Business.Events.csproj", "{0F723A16-1416-409B-9182-23FC5E90E6FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Business.DomainEventHandlers", "LittleToDoList.Business.DomainEventHandlers\LittleToDoList.Business.DomainEventHandlers.csproj", "{E783917E-41E4-4BDE-925A-21F0035A992F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{0F723A16-1416-409B-9182-23FC5E90E6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F723A16-1416-409B-9182-23FC5E90E6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F723A16-1416-409B-9182-23FC5E90E6FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E783917E-41E4-4BDE-925A-21F0035A992F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E783917E-41E4-4BDE-925A-21F0035A992F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E783917E-41E4-4BDE-925A-21F0035A992F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E783917E-41E4-4BDE-925A-21F0035A992F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ECF5D546-8186-4489-A758-3BD49E407193} = {B214A776-B7D4-4664-ADA0-95D3C203FFF7}
@@ -72,5 +78,6 @@ Global
 		{FF97084D-1A29-4709-AEEA-365BAD949C90} = {B214A776-B7D4-4664-ADA0-95D3C203FFF7}
 		{E34FE728-BD2A-4C14-820C-F3731A1A095E} = {CE2A4F72-CC0C-454C-80EF-9898326D8138}
 		{0F723A16-1416-409B-9182-23FC5E90E6FB} = {CE2A4F72-CC0C-454C-80EF-9898326D8138}
+		{E783917E-41E4-4BDE-925A-21F0035A992F} = {CE2A4F72-CC0C-454C-80EF-9898326D8138}
 	EndGlobalSection
 EndGlobal
