@@ -1,6 +1,6 @@
 ﻿namespace LittleToDoList.Business.Abstractions;
 
-public abstract class Entity
+public abstract class Entity : IEntity
 {
     
 }
