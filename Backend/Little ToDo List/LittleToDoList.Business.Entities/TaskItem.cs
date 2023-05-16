@@ -15,7 +15,7 @@ public class TaskItem : Entity
     [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime CreationDate { get; set; }
     
-    public DateTime CompletionDate { get; set; }
+    public DateTime? CompletionDate { get; set; }
     
     public string? Description { get; set; }
     
