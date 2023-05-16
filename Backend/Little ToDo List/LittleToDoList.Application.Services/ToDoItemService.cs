@@ -6,6 +6,12 @@ namespace LittleToDoList.Application.Services;
 
 public class ToDoItemService
 {
-    private readonly IRepository<TaskItem> _accountRepository;
+    private readonly IRepository<TaskItem> _taskRepository;
     private readonly IMapper _mapper;
+
+    public ToDoItemService(IRepository<TaskItem> taskRepository, IMapper mapper)
+    {
+        _taskRepository = taskRepository;
+        _mapper = mapper;
+    }
 }
