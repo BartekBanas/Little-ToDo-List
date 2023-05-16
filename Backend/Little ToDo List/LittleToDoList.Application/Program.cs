@@ -1,4 +1,9 @@
+using LittleToDoList.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var configuration = builder.Configuration;
 
 // Add services to the container.
 var services = builder.Services;
@@ -16,6 +21,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+services.AddDbContext<LittleTodoListDbContext>(contextOptionsBuilder =>
+    contextOptionsBuilder.UseMySql(
+        configuration.GetConnectionString("LittleTodoListDatabaseConnectionString"),
+        new MySqlServerVersion(new Version(8, 0, 29))
+    ));
+
 
 app.UseHttpsRedirection();
 
