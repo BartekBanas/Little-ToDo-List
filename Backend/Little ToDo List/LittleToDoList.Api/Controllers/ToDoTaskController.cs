@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LittleToDoList.Api.Dto;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LittleToDoList.Api.Controllers;
 
@@ -19,13 +20,19 @@ public class ToDoTaskController
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateTask()
+    public async Task<IActionResult> CreateTask([FromBody] TaskItemDto taskItem)
     {
         throw new NotImplementedException();
     }
 
     [HttpPut("{taskId:int}")]
     public async Task<IActionResult> UpdateTask([FromRoute] int taskId)
+    {
+        throw new NotImplementedException();
+    }
+    
+    [HttpGet]
+    public IActionResult GetTasks(int pageSize = 10, int pageNumber = 0)
     {
         throw new NotImplementedException();
     }

@@ -1,11 +1,17 @@
+using LittleToDoList.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var configuration = builder.Configuration;
 
-builder.Services.AddControllers();
+// Add services to the container.
+var services = builder.Services;
+
+services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -15,6 +21,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+services.AddDbContext<LittleTodoListDbContext>(contextOptionsBuilder =>
+    contextOptionsBuilder.UseMySql(
+        configuration.GetConnectionString("LittleTodoListDatabaseConnectionString"),
+        new MySqlServerVersion(new Version(8, 0, 29))
+    ));
+
 
 app.UseHttpsRedirection();
 
