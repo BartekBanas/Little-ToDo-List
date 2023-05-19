@@ -5,7 +5,13 @@ using LittleToDoList.Business.Entities;
 
 namespace LittleToDoList.Application.Services;
 
-public class ToDoItemService
+public interface IToDoItemService
+{
+    Task<TaskItem> GetTodoItemAsync(int todoItemId);
+    Task CreateTodoItem(TaskItemDto dto);
+}
+
+public class ToDoItemService : IToDoItemService
 {
     private readonly IRepository<TaskItem> _taskRepository;
     private readonly IMapper _mapper;
@@ -38,6 +44,5 @@ public class ToDoItemService
         };
 
         await _taskRepository.CreateOneAsync(newTodoTask);
-        
     }
 }
