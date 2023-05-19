@@ -1,7 +1,7 @@
 ﻿using LittleToDoList.Api.Dto;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LittleToDoList.Api.Controllers;
+namespace LittleToDoList.Api.Controllers.Controllers;
 
 [ApiController]
 [Route("api/task")]

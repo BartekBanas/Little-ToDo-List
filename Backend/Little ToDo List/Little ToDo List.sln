@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LittleToDoList.Api", "Littl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LittleToDoList.Infrastructure", "LittleToDoList.Infrastructure", "{5085DD10-C89C-4B4D-938D-FCDEA85CF0DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Api", "LittleToDoList.Api\LittleToDoList.Api.csproj", "{ECF5D546-8186-4489-A758-3BD49E407193}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Api.Controllers", "LittleToDoList.Api.Controllers\LittleToDoList.Api.Controllers.csproj", "{ECF5D546-8186-4489-A758-3BD49E407193}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Infrastructure.Repositories", "LittleToDoList.Infrastructure.Repositories\LittleToDoList.Infrastructure.Repositories.csproj", "{7D513FD5-F01F-4EEF-8D1E-B119CE2C954E}"
 EndProject
