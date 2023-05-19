@@ -1,4 +1,5 @@
 ﻿using LittleToDoList.Application.Dto;
+using LittleToDoList.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LittleToDoList.Api.Controllers.Controllers;
@@ -7,6 +8,13 @@ namespace LittleToDoList.Api.Controllers.Controllers;
 [Route("api/task")]
 public class ToDoTaskController
 {
+    private readonly IToDoItemService _toDoItemService;
+
+    public ToDoTaskController(IToDoItemService toDoItemService)
+    {
+        _toDoItemService = toDoItemService;
+    }
+
     [HttpGet]
     public async Task<IActionResult> ReturnAllTasks()
     {
