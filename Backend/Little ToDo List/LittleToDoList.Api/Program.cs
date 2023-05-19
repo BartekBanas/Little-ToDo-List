@@ -6,7 +6,6 @@ using LittleToDoList.Application.Services;
 using LittleToDoList.Business.Abstractions;
 using LittleToDoList.Business.Entities;
 using LittleToDoList.Infrastructure.Repositories;
-using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,11 +40,17 @@ services.AddMediatR(cfg =>
 // ============= RUN =============
 var app = builder.Build();
 
+app.UseStaticFiles();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyAPI");
+        c.InjectStylesheet("/swagger-ui/SwaggerDark.css");
+    });
 }
 
 app.UseHttpsRedirection();
