@@ -1,5 +1,6 @@
 using LittleToDoList.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using LittleToDoList.Api.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ var configuration = builder.Configuration;
 var services = builder.Services;
 
 services.AddControllers();
+services.AddControllers().AddApplicationPart(typeof(ToDoTaskController).Assembly);
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
