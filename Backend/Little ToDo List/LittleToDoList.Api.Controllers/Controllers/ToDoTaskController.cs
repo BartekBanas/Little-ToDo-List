@@ -6,7 +6,7 @@ namespace LittleToDoList.Api.Controllers.Controllers;
 
 [ApiController]
 [Route("api/task")]
-public class ToDoTaskController
+public class ToDoTaskController : Controller
 {
     private readonly IToDoItemService _toDoItemService;
 
@@ -24,13 +24,17 @@ public class ToDoTaskController
     [HttpGet("{taskId:int}")]
     public async Task<IActionResult> ReturnSpecificTask([FromRoute] int taskId)
     {
-        throw new NotImplementedException();
+        var task = await _toDoItemService.GetTodoItemAsync(taskId);
+
+        return Ok(task);
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateTask([FromBody] TaskItemDto taskItem)
     {
-        throw new NotImplementedException();
+        await _toDoItemService.CreateTodoItem(taskItem);
+
+        return Ok();
     }
 
     [HttpPut("{taskId:int}")]
