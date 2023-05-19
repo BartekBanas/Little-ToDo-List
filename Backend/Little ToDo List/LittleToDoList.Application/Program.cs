@@ -1,10 +1,13 @@
 using LittleToDoList.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ============= CONFIG =============
 var configuration = builder.Configuration;
 
+// ============= SERVICES =============
 // Add services to the container.
 var services = builder.Services;
 
@@ -13,6 +16,13 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
+services.AddDbContext<LittleTodoListDbContext>(contextOptionsBuilder =>
+    contextOptionsBuilder.UseMySql(
+        configuration.GetConnectionString("LittleTodoListDatabaseConnectionString"),
+        new MySqlServerVersion(new Version(8, 0, 28))
+    ));
+
+// ============= RUN =============
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,11 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-services.AddDbContext<LittleTodoListDbContext>(contextOptionsBuilder =>
-    contextOptionsBuilder.UseMySql(
-        configuration.GetConnectionString("LittleTodoListDatabaseConnectionString"),
-        new MySqlServerVersion(new Version(8, 0, 29))
-    ));
+
 
 
 app.UseHttpsRedirection();
