@@ -15,8 +15,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\LittleToDoList.Api.Controllers\LittleToDoList.Api.Controllers.csproj" />
       <ProjectReference Include="..\LittleToDoList.Application.Services\LittleToDoList.Application.Services.csproj" />
       <ProjectReference Include="..\LittleToDoList.Infrastructure\LittleToDoList.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="LittleToDoList.Api.Controllers\obj\LittleToDoList.Api.Controllers.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="LittleToDoList.Api.Controllers\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="LittleToDoList.Api.Controllers\obj\project.packagespec.json" />
     </ItemGroup>
 
 </Project>
