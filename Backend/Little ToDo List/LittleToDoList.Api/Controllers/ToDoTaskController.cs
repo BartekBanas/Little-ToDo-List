@@ -2,7 +2,7 @@
 using LittleToDoList.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LittleToDoList.Api.Controllers.Controllers;
+namespace LittleToDoList.Api.Controllers;
 
 [ApiController]
 [Route("api/task")]
@@ -15,11 +15,11 @@ public class ToDoTaskController : Controller
         _toDoItemService = toDoItemService;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> ReturnAllTasks()
-    {
-        throw new NotImplementedException();
-    }
+    // [HttpGet]
+    // public async Task<IActionResult> ReturnAllTasks()
+    // {
+    //     throw new NotImplementedException();
+    // }
 
     [HttpGet("{taskId:int}")]
     public async Task<IActionResult> ReturnSpecificTask([FromRoute] int taskId)
@@ -37,15 +37,15 @@ public class ToDoTaskController : Controller
         return Ok();
     }
 
-    [HttpPut("{taskId:int}")]
-    public async Task<IActionResult> UpdateTask([FromRoute] int taskId)
-    {
-        throw new NotImplementedException();
-    }
-    
-    [HttpGet]
-    public IActionResult GetTasks(int pageSize = 10, int pageNumber = 0)
-    {
-        throw new NotImplementedException();
-    }
+    // [HttpPut("{taskId:int}")]
+    // public async Task<IActionResult> UpdateTask([FromRoute] int taskId)
+    // {
+    //     throw new NotImplementedException();
+    // }
+    //
+    // [HttpGet]
+    // public IActionResult GetTasks(int pageSize = 10, int pageNumber = 0)
+    // {
+    //     throw new NotImplementedException();
+    // }
 }
