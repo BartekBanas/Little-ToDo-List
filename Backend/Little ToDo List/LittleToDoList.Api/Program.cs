@@ -1,18 +1,15 @@
 using LittleToDoList.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ============= CONFIG =============
+// ============== CONFIG ==============
 var configuration = builder.Configuration;
 
 // ============= SERVICES =============
-// Add services to the container.
 var services = builder.Services;
 
 services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
@@ -31,9 +28,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-
-
 
 app.UseHttpsRedirection();
 
