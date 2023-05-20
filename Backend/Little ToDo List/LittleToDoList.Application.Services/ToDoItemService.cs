@@ -2,6 +2,7 @@
 using LittleToDoList.Application.Dto;
 using LittleToDoList.Business.Abstractions;
 using LittleToDoList.Business.Entities;
+using LittleToDoList.Business.Events;
 
 namespace LittleToDoList.Application.Services;
 
@@ -44,5 +45,9 @@ public class ToDoItemService : IToDoItemService
         };
 
         await _taskRepository.CreateOneAsync(newTodoTask);
+        
+        newTodoTask.AddDomainEvent(new TodoCreated(newTodoTask));
+
+        await _taskRepository.SaveChangesAsync();
     }
 }
