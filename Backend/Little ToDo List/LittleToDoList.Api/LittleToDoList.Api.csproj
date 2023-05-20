@@ -29,5 +29,9 @@
       <_ContentIncludedByDefault Remove="LittleToDoList.Api.Controllers\obj\project.assets.json" />
       <_ContentIncludedByDefault Remove="LittleToDoList.Api.Controllers\obj\project.packagespec.json" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\swagger-ui" />
+    </ItemGroup>
     
 </Project>
