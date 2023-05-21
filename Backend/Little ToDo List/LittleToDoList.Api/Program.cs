@@ -23,7 +23,11 @@ services.AddSwaggerGen();
 services.AddDbContext<LittleTodoListDbContext>(contextOptionsBuilder =>
     contextOptionsBuilder.UseMySql(
         configuration.GetConnectionString("LittleTodoListDatabaseConnectionString"),
-        new MySqlServerVersion(new Version(8, 0, 28))
+        new MySqlServerVersion(new Version(8, 0, 28)),
+        optionsBuilder =>
+        {
+            optionsBuilder.MigrationsAssembly("LittleToDoList.Api");
+        } 
     ));
 
 services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
