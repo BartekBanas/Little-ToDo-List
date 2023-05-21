@@ -9,6 +9,7 @@ namespace LittleToDoList.Application.Services;
 public interface IToDoItemService
 {
     Task<TaskItem> GetTodoItemAsync(int todoItemId);
+    Task<ICollection<TaskItemDto>> GetAllTodoItemsAsync();
     Task CreateTodoItem(TaskCreateDto dto);
 }
 
@@ -30,6 +31,15 @@ public class ToDoItemService : IToDoItemService
         var dto = _mapper.Map<TaskItem>(taskItem);
 
         return dto;
+    }
+    
+    public async Task<ICollection<TaskItemDto>> GetAllTodoItemsAsync()
+    {
+        var taskItems = await _taskRepository.GetAllAsync();
+
+        var dtos = _mapper.Map<ICollection<TaskItemDto>>(taskItems);
+
+        return dtos;
     }
 
     public async Task CreateTodoItem(TaskCreateDto dto)
