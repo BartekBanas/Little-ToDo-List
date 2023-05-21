@@ -9,7 +9,9 @@ namespace LittleToDoList.Application.Services;
 public interface IToDoItemService
 {
     Task<TaskItem> GetTodoItemAsync(int todoItemId);
-    Task CreateTodoItem(TaskItemDto dto);
+    Task<ICollection<TaskItemDto>> GetAllTodoItemsAsync();
+    Task CreateTodoItem(TaskCreateDto dto);
+    Task DeleteTodoItem(int todoItemId);
 }
 
 public class ToDoItemService : IToDoItemService
@@ -31,8 +33,17 @@ public class ToDoItemService : IToDoItemService
 
         return dto;
     }
+    
+    public async Task<ICollection<TaskItemDto>> GetAllTodoItemsAsync()
+    {
+        var taskItems = await _taskRepository.GetAllAsync();
 
-    public async Task CreateTodoItem(TaskItemDto dto)
+        var dtos = _mapper.Map<ICollection<TaskItemDto>>(taskItems);
+
+        return dtos;
+    }
+
+    public async Task CreateTodoItem(TaskCreateDto dto)
     {
         var newTodoTask = TaskItem.CreateInstance(
             name: dto.Name,
@@ -42,6 +53,13 @@ public class ToDoItemService : IToDoItemService
         await _taskRepository.CreateOneAsync(newTodoTask);
 
         newTodoTask.AddDomainEvent(new TodoCreated(newTodoTask));
+
+        await _taskRepository.SaveChangesAsync();
+    }
+
+    public async Task DeleteTodoItem(int todoItemId)
+    {
+        await _taskRepository.DeleteOneAsync(todoItemId);
 
         await _taskRepository.SaveChangesAsync();
     }

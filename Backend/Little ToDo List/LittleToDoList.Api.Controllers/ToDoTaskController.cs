@@ -15,11 +15,13 @@ public class ToDoTaskController : Controller
         _toDoItemService = toDoItemService;
     }
 
-    // [HttpGet]
-    // public async Task<IActionResult> ReturnAllTasks()
-    // {
-    //     throw new NotImplementedException();
-    // }
+    [HttpGet]
+    public async Task<IActionResult> ReturnAllTasks()
+    {
+        var taskItemDtos = await _toDoItemService.GetAllTodoItemsAsync();
+
+        return Ok(taskItemDtos);
+    }
 
     [HttpGet("{taskId:int}")]
     public async Task<IActionResult> ReturnSpecificTask([FromRoute] int taskId)
@@ -30,9 +32,17 @@ public class ToDoTaskController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateTask([FromBody] TaskItemDto taskItem)
+    public async Task<IActionResult> CreateTask([FromBody] TaskCreateDto taskCreateDto)
     {
-        await _toDoItemService.CreateTodoItem(taskItem);
+        await _toDoItemService.CreateTodoItem(taskCreateDto);
+
+        return Ok();
+    }
+    
+    [HttpDelete("{taskId:int}")]
+    public async Task<IActionResult> DeleteSpecificTask([FromRoute] int taskId)
+    {
+        await _toDoItemService.DeleteTodoItem(taskId);
 
         return Ok();
     }
