@@ -5,6 +5,10 @@ public class TaskCreateDto
     public string Name { get; set; }
     public string? Description { get; set; }
 
+    public TaskCreateDto()
+    {
+    }
+
     public TaskCreateDto(string name)
     {
         Name = name;
