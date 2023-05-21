@@ -22,30 +22,25 @@ public class ToDoItemService : IToDoItemService
         _taskRepository = taskRepository;
         _mapper = mapper;
     }
-    
+
     public async Task<TaskItem> GetTodoItemAsync(int todoItemId)
     {
         var taskItem = await _taskRepository.GetOneAsync(todoItemId);
-        
+
         var dto = _mapper.Map<TaskItem>(taskItem);
-        
+
         return dto;
     }
 
     public async Task CreateTodoItem(TaskItemDto dto)
     {
-        var newTodoTask = new TaskItem
-        {
-            Id = dto.Id,
-            Name = dto.Name,
-            CreationDate = dto.CreationDate,
-            CompletionDate = dto.CompletionDate,
-            Description = dto.Description,
-            IsDone = dto.IsDone
-        };
+        var newTodoTask = TaskItem.CreateInstance(
+            name: dto.Name,
+            description: dto.Description
+        );
 
         await _taskRepository.CreateOneAsync(newTodoTask);
-        
+
         newTodoTask.AddDomainEvent(new TodoCreated(newTodoTask));
 
         await _taskRepository.SaveChangesAsync();
