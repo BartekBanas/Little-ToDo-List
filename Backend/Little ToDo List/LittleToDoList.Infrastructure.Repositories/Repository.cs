@@ -50,6 +50,16 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         return await Task.FromResult(entity);
     }
     
+    public virtual async Task<TEntity> UpdateAsync(object update, int id)
+    {
+        var entity = await GetOneAsync(id);
+
+        _dbSet.Attach(entity).CurrentValues.SetValues(update);
+        _dbSet.Attach(entity).State = EntityState.Modified;
+
+        return entity;
+    }
+    
     public virtual async Task SaveChangesAsync()
     {
         await _mediator.DispatchDomainEventsAsync(_dbContext);
