@@ -11,6 +11,7 @@ public interface IToDoItemService
     Task<TaskItem> GetTodoItemAsync(int todoItemId);
     Task<ICollection<TaskItemDto>> GetAllTodoItemsAsync();
     Task CreateTodoItem(TaskCreateDto dto);
+    Task DeleteTodoItem(int todoItemId);
 }
 
 public class ToDoItemService : IToDoItemService
@@ -52,6 +53,13 @@ public class ToDoItemService : IToDoItemService
         await _taskRepository.CreateOneAsync(newTodoTask);
 
         newTodoTask.AddDomainEvent(new TodoCreated(newTodoTask));
+
+        await _taskRepository.SaveChangesAsync();
+    }
+
+    public async Task DeleteTodoItem(int todoItemId)
+    {
+        await _taskRepository.DeleteOneAsync(todoItemId);
 
         await _taskRepository.SaveChangesAsync();
     }

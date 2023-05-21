@@ -38,6 +38,14 @@ public class ToDoTaskController : Controller
 
         return Ok();
     }
+    
+    [HttpDelete("{taskId:int}")]
+    public async Task<IActionResult> DeleteSpecificTask([FromRoute] int taskId)
+    {
+        await _toDoItemService.DeleteTodoItem(taskId);
+
+        return Ok();
+    }
 
     // [HttpPut("{taskId:int}")]
     // public async Task<IActionResult> UpdateTask([FromRoute] int taskId)
