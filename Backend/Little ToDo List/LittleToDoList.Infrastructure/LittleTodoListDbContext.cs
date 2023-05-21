@@ -12,6 +12,14 @@ public class LittleTodoListDbContext : DbContext
     {
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<TaskItem>().HasKey(taskItem => taskItem.Id);
+        modelBuilder.Entity<TaskItem>().Property(taskItem => taskItem.Name).HasMaxLength(64);
+        
+        base.OnModelCreating(modelBuilder);
+    }
+
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
         try
