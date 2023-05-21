@@ -9,7 +9,7 @@ namespace LittleToDoList.Application.Services;
 public interface IToDoItemService
 {
     Task<TaskItem> GetTodoItemAsync(int todoItemId);
-    Task CreateTodoItem(TaskItemDto dto);
+    Task CreateTodoItem(TaskCreateDto dto);
 }
 
 public class ToDoItemService : IToDoItemService
@@ -32,7 +32,7 @@ public class ToDoItemService : IToDoItemService
         return dto;
     }
 
-    public async Task CreateTodoItem(TaskItemDto dto)
+    public async Task CreateTodoItem(TaskCreateDto dto)
     {
         var newTodoTask = TaskItem.CreateInstance(
             name: dto.Name,

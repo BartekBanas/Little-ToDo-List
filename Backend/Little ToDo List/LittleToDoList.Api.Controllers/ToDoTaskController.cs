@@ -30,9 +30,9 @@ public class ToDoTaskController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateTask([FromBody] TaskItemDto taskItem)
+    public async Task<IActionResult> CreateTask([FromBody] TaskCreateDto taskCreateDto)
     {
-        await _toDoItemService.CreateTodoItem(taskItem);
+        await _toDoItemService.CreateTodoItem(taskCreateDto);
 
         return Ok();
     }
