@@ -57,7 +57,7 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
     
     public virtual async Task<TEntity> UpdateAsync(object update, int id)
     {
-        var entity = await GetOneAsync(id);
+        var entity = await GetOneRequiredAsync(id);
 
         _dbSet.Attach(entity).CurrentValues.SetValues(update);
         _dbSet.Attach(entity).State = EntityState.Modified;
