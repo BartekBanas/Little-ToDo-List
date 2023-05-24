@@ -1,4 +1,6 @@
-﻿using LittleToDoList.Business.Abstractions;
+﻿using System.Linq.Expressions;
+using LittleToDoList.Business.Abstractions;
+using LittleToDoList.Infrastructure.Errors;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +29,23 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         var entity = await _dbSet.FindAsync(id);
 
         return entity;
+    }
+    
+    public async Task<TEntity> GetOneRequiredAsync(Expression<Func<TEntity, bool>>? filter = null, params string[] includeProperties)
+    {
+        IQueryable<TEntity> query = _dbSet;
+
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+
+        foreach (var includeProperty in includeProperties)
+        {
+            query = query.Include(includeProperty);
+        }
+
+        return await query.FirstOrDefaultAsync() ?? throw new ItemNotFoundErrorException();
     }
 
     public virtual async Task<ICollection<TEntity>> GetAllAsync()
