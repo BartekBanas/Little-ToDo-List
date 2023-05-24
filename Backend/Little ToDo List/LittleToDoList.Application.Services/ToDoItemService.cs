@@ -56,6 +56,20 @@ public class ToDoItemService : IToDoItemService
 
         await _taskRepository.SaveChangesAsync();
     }
+    
+    public async Task<TaskItemDto> UpdateTaskItemAsync(int id, TaskItemDto updateDto)
+    {
+        var entity = await _taskRepository.UpdateAsync(updateDto, id);
+
+        var updatedDto = new TaskItemDto(entity.Id, entity.Name, entity.CreationDate)
+        {
+            CompletionDate = entity.CompletionDate,
+            Description = entity.Description,
+            IsDone = entity.IsDone
+        };
+
+        return updatedDto;
+    }
 
     public async Task DeleteTodoItem(int todoItemId)
     {
