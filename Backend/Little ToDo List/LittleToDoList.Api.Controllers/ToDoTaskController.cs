@@ -47,12 +47,14 @@ public class ToDoTaskController : Controller
         return Ok();
     }
 
-    // [HttpPut("{taskId:int}")]
-    // public async Task<IActionResult> UpdateTask([FromRoute] int taskId)
-    // {
-    //     throw new NotImplementedException();
-    // }
-    //
+    [HttpPut("{taskId:int}")]
+    public async Task<IActionResult> UpdateTask([FromRoute] int taskId, [FromBody] TaskUpdateDto updateDto)
+    {
+        await _toDoItemService.UpdateTaskItemAsync(taskId, updateDto);
+
+        return Ok();
+    }
+    
     // [HttpGet]
     // public IActionResult GetTasks(int pageSize = 10, int pageNumber = 0)
     // {
