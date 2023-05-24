@@ -24,28 +24,21 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         _saveChangesAsyncDelegate = async () => { await dbContext.SaveChangesAsync(); };
     }
     
-    public virtual async Task<TEntity?> GetOneAsync(int id)
+    public virtual async Task<TEntity?> GetOneAsync(object id)
     {
         var entity = await _dbSet.FindAsync(id);
 
         return entity;
     }
     
-    public async Task<TEntity> GetOneRequiredAsync(Expression<Func<TEntity, bool>>? filter = null, params string[] includeProperties)
+    public virtual async Task<TEntity> GetOneRequiredAsync(params object[] ids)
     {
-        IQueryable<TEntity> query = _dbSet;
+        var entity = await GetOneAsync(ids);
 
-        if (filter != null)
-        {
-            query = query.Where(filter);
-        }
+        if (entity == null)
+            throw new ItemNotFoundErrorException(); 
 
-        foreach (var includeProperty in includeProperties)
-        {
-            query = query.Include(includeProperty);
-        }
-
-        return await query.FirstOrDefaultAsync() ?? throw new ItemNotFoundErrorException();
+        return entity;
     }
 
     public virtual async Task<ICollection<TEntity>> GetAllAsync()
