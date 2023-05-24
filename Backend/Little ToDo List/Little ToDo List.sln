@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Business.Abs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Services", "LittleToDoList.Application.Services\LittleToDoList.Application.Services.csproj", "{052894EC-625D-4799-8E78-8BB507B4C384}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Dto", "LittleToDoList.Application.Dto\LittleToDoList.Application.Dto.csproj", "{FF97084D-1A29-4709-AEEA-365BAD949C90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Dtos", "LittleToDoList.Application.Dtos\LittleToDoList.Application.Dtos.csproj", "{FF97084D-1A29-4709-AEEA-365BAD949C90}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Business.Entities", "LittleToDoList.Business.Entities\LittleToDoList.Business.Entities.csproj", "{E34FE728-BD2A-4C14-820C-F3731A1A095E}"
 EndProject
