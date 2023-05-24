@@ -11,6 +11,7 @@ public interface IToDoItemService
     Task<TaskItem> GetTodoItemAsync(int todoItemId);
     Task<ICollection<TaskItemDto>> GetAllTodoItemsAsync();
     Task CreateTodoItem(TaskCreateDto dto);
+    Task<TaskItemDto> UpdateTaskItemAsync(int id, TaskUpdateDto updateDto);
     Task DeleteTodoItem(int todoItemId);
 }
 
@@ -57,7 +58,7 @@ public class ToDoItemService : IToDoItemService
         await _taskRepository.SaveChangesAsync();
     }
     
-    public async Task<TaskItemDto> UpdateTaskItemAsync(int id, TaskItemDto updateDto)
+    public async Task<TaskItemDto> UpdateTaskItemAsync(int id, TaskUpdateDto updateDto)
     {
         var entity = await _taskRepository.UpdateAsync(updateDto, id);
 
