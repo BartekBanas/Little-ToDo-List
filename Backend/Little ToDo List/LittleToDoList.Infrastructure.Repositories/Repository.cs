@@ -54,14 +54,7 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
 
         return entities;
     }
-    
-    public virtual async Task DeleteOneAsync(int keys)
-    {
-        var entity = await GetOneAsync(keys);
 
-        if (entity != null) _dbSet.Remove(entity);
-    }
-    
     public virtual async Task<TEntity> CreateOneAsync(TEntity entity)
     {
         _dbSet.Add(entity);
@@ -77,6 +70,13 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         _dbSet.Attach(entity).State = EntityState.Modified;
 
         return entity;
+    }
+    
+    public virtual async Task DeleteOneAsync(int keys)
+    {
+        var entity = await GetOneAsync(keys);
+
+        if (entity != null) _dbSet.Remove(entity);
     }
     
     public virtual async Task SaveChangesAsync()
