@@ -7,4 +7,8 @@
         <RootNamespace>LittleToDoList.Application.Dto</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\LittleToDoList.Business.Entities\LittleToDoList.Business.Entities.csproj" />
+    </ItemGroup>
+
 </Project>
