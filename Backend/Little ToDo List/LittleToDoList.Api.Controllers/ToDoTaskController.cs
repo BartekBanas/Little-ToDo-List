@@ -50,9 +50,9 @@ public class ToDoTaskController : Controller
     [HttpPut("{taskId:int}")]
     public async Task<IActionResult> UpdateTask([FromRoute] int taskId, [FromBody] TaskUpdateDto updateDto)
     {
-        await _toDoItemService.UpdateTaskItemAsync(taskId, updateDto);
+        var updatedItem = await _toDoItemService.UpdateTaskItemAsync(taskId, updateDto);
 
-        return Ok();
+        return Ok(updatedItem);
     }
     
     // [HttpGet]

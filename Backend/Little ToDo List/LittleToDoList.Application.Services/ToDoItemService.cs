@@ -69,6 +69,8 @@ public class ToDoItemService : IToDoItemService
             IsDone = entity.IsDone
         };
 
+        await _taskRepository.SaveChangesAsync();
+        
         return updatedDto;
     }
 
