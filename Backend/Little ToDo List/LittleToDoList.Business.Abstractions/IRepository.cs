@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace LittleToDoList.Business.Abstractions;
+﻿namespace LittleToDoList.Business.Abstractions;
 
 public interface IRepository { }
 
@@ -17,4 +15,5 @@ public interface IRepository<TEntity> : IRepository where TEntity : IEntity
     Task DeleteOneAsync(int keys);
     
     Task SaveChangesAsync();
+    Task<IEnumerable<TEntity>> GetPagedAsync(int pageSize, int pageNumber);
 }

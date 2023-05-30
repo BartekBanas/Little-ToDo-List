@@ -55,9 +55,10 @@ public class ToDoTaskController : Controller
         return Ok(updatedItem);
     }
     
-    // [HttpGet]
-    // public IActionResult GetTasks(int pageSize = 10, int pageNumber = 0)
-    // {
-    //     throw new NotImplementedException();
-    // }
+    [HttpGet]
+    public IActionResult GetTasks([FromQuery]int pageSize = 10, [FromQuery]int pageNumber = 0)
+    {
+        var tasks = _toDoItemService.GetTasks(pageSize, pageNumber);
+        return Ok(tasks);
+    }
 }

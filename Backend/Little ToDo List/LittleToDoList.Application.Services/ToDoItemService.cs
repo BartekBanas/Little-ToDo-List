@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LittleToDoList.Application.Dto;
+using LittleToDoList.Application.Dto.Mapping;
 using LittleToDoList.Business.Abstractions;
 using LittleToDoList.Business.Entities;
 using LittleToDoList.Business.Events;
@@ -13,6 +14,7 @@ public interface IToDoItemService
     Task CreateTodoItem(TaskCreateDto dto);
     Task<TaskItemDto> UpdateTaskItemAsync(int id, TaskUpdateDto updateDto);
     Task DeleteTodoItem(int todoItemId);
+    Task<IEnumerable<TaskItemDto>> GetTasks(int pageSize, int pageNumber);
 }
 
 public class ToDoItemService : IToDoItemService
@@ -62,13 +64,8 @@ public class ToDoItemService : IToDoItemService
     {
         var entity = await _taskRepository.UpdateAsync(updateDto, id);
 
-        var updatedDto = new TaskItemDto(entity.Id, entity.Name, entity.CreationDate)
-        {
-            CompletionDate = entity.CompletionDate,
-            Description = entity.Description,
-            IsDone = entity.IsDone
-        };
-
+        var updatedDto = entity.ToDto();
+;
         await _taskRepository.SaveChangesAsync();
         
         return updatedDto;
@@ -79,5 +76,12 @@ public class ToDoItemService : IToDoItemService
         await _taskRepository.DeleteOneAsync(todoItemId);
 
         await _taskRepository.SaveChangesAsync();
+    }
+    
+    public async Task<IEnumerable<TaskItemDto>> GetTasks(int pageSize, int pageNumber)
+    {
+        var pagedEntities = await _taskRepository.GetPagedAsync(pageSize, pageNumber);
+
+        return pagedEntities.Select(taskItem => taskItem.ToDto());
     }
 }

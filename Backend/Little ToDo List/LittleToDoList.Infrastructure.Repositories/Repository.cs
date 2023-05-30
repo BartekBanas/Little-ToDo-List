@@ -1,5 +1,4 @@
-﻿using System.Linq.Expressions;
-using LittleToDoList.Business.Abstractions;
+﻿using LittleToDoList.Business.Abstractions;
 using LittleToDoList.Infrastructure.Errors;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -70,6 +69,11 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         var entity = await GetOneAsync(keys);
 
         if (entity != null) _dbSet.Remove(entity);
+    }
+    
+    public virtual async Task<IEnumerable<TEntity>> GetPagedAsync(int pageSize, int pageNumber)
+    {
+        return await _dbSet.Skip(pageNumber * pageSize).Take(pageSize).ToListAsync();
     }
     
     public virtual async Task SaveChangesAsync()
