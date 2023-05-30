@@ -4,15 +4,16 @@ public interface IRepository { }
 
 public interface IRepository<TEntity> : IRepository where TEntity : IEntity
 {
-    Task<TEntity?> GetOneAsync(int id);
+    Task<TEntity?> GetOneAsync(object id);
+    Task<TEntity> GetOneRequiredAsync(int id);
+    Task<ICollection<TEntity>> GetAllAsync();
 
-    public Task<ICollection<TEntity>> GetAllAsync();
-
-
-    public Task DeleteOneAsync(int keys);
-
-    public Task<TEntity> CreateOneAsync(TEntity entity);
+    Task<TEntity> CreateOneAsync(TEntity entity);
+    
     Task<TEntity> UpdateAsync(object update, int id);
     
+    Task DeleteOneAsync(int keys);
+    
     Task SaveChangesAsync();
+    Task<IEnumerable<TEntity>> GetPagedAsync(int pageSize, int pageNumber);
 }

@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\LittleToDoList.Business.Abstractions\LittleToDoList.Business.Abstractions.csproj" />
+      <ProjectReference Include="..\LittleToDoList.Infrastructure.Errors\LittleToDoList.Infrastructure.Errors.csproj" />
     </ItemGroup>
 
     <ItemGroup>

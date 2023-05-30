@@ -15,14 +15,6 @@ public class ToDoTaskController : Controller
         _toDoItemService = toDoItemService;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> ReturnAllTasks()
-    {
-        var taskItemDtos = await _toDoItemService.GetAllTodoItemsAsync();
-
-        return Ok(taskItemDtos);
-    }
-
     [HttpGet("{taskId:int}")]
     public async Task<IActionResult> ReturnSpecificTask([FromRoute] int taskId)
     {
@@ -47,15 +39,18 @@ public class ToDoTaskController : Controller
         return Ok();
     }
 
-    // [HttpPut("{taskId:int}")]
-    // public async Task<IActionResult> UpdateTask([FromRoute] int taskId)
-    // {
-    //     throw new NotImplementedException();
-    // }
-    //
-    // [HttpGet]
-    // public IActionResult GetTasks(int pageSize = 10, int pageNumber = 0)
-    // {
-    //     throw new NotImplementedException();
-    // }
+    [HttpPut("{taskId:int}")]
+    public async Task<IActionResult> UpdateTask([FromRoute] int taskId, [FromBody] TaskUpdateDto updateDto)
+    {
+        var updatedItem = await _toDoItemService.UpdateTaskItemAsync(taskId, updateDto);
+
+        return Ok(updatedItem);
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> GetTasks([FromQuery]int pageSize = 10, [FromQuery]int pageNumber = 0)
+    {
+        var tasks = await _toDoItemService.GetTasks(pageSize, pageNumber);
+        return Ok(tasks);
+    }
 }

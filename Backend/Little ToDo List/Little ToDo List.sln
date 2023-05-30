@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Business.Abs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Services", "LittleToDoList.Application.Services\LittleToDoList.Application.Services.csproj", "{052894EC-625D-4799-8E78-8BB507B4C384}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Dto", "LittleToDoList.Application.Dto\LittleToDoList.Application.Dto.csproj", "{FF97084D-1A29-4709-AEEA-365BAD949C90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Dtos", "LittleToDoList.Application.Dtos\LittleToDoList.Application.Dtos.csproj", "{FF97084D-1A29-4709-AEEA-365BAD949C90}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Business.Entities", "LittleToDoList.Business.Entities\LittleToDoList.Business.Entities.csproj", "{E34FE728-BD2A-4C14-820C-F3731A1A095E}"
 EndProject
@@ -27,6 +27,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Infrastructure", "LittleToDoList.Infrastructure\LittleToDoList.Infrastructure.csproj", "{1A91AE04-B93D-4A93-BE3C-60CDCFD8E1DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Api.Controllers", "LittleToDoList.Api.Controllers\LittleToDoList.Api.Controllers.csproj", "{283A599B-46F7-44C2-A52F-5610EAB1CA43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Application.Errors", "LittleToDoList.Application.Errors\LittleToDoList.Application.Errors.csproj", "{25118FD2-607B-434A-8BEB-B3BE6FFD1337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleToDoList.Infrastructure.Errors", "LittleToDoList.Infrastructure.Errors\LittleToDoList.Infrastructure.Errors.csproj", "{FE05DCB5-490B-4700-9266-441D805C889A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +78,14 @@ Global
 		{283A599B-46F7-44C2-A52F-5610EAB1CA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{283A599B-46F7-44C2-A52F-5610EAB1CA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{283A599B-46F7-44C2-A52F-5610EAB1CA43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25118FD2-607B-434A-8BEB-B3BE6FFD1337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25118FD2-607B-434A-8BEB-B3BE6FFD1337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25118FD2-607B-434A-8BEB-B3BE6FFD1337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25118FD2-607B-434A-8BEB-B3BE6FFD1337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE05DCB5-490B-4700-9266-441D805C889A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE05DCB5-490B-4700-9266-441D805C889A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE05DCB5-490B-4700-9266-441D805C889A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE05DCB5-490B-4700-9266-441D805C889A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7D513FD5-F01F-4EEF-8D1E-B119CE2C954E} = {5085DD10-C89C-4B4D-938D-FCDEA85CF0DF}
@@ -86,5 +98,7 @@ Global
 		{0EC2BD66-8A3C-4B13-B73C-AB0AE3BA9BBB} = {B214A776-B7D4-4664-ADA0-95D3C203FFF7}
 		{FF97084D-1A29-4709-AEEA-365BAD949C90} = {FEECBC39-0BA7-4487-B26B-71A974B8B970}
 		{283A599B-46F7-44C2-A52F-5610EAB1CA43} = {B214A776-B7D4-4664-ADA0-95D3C203FFF7}
+		{25118FD2-607B-434A-8BEB-B3BE6FFD1337} = {FEECBC39-0BA7-4487-B26B-71A974B8B970}
+		{FE05DCB5-490B-4700-9266-441D805C889A} = {5085DD10-C89C-4B4D-938D-FCDEA85CF0DF}
 	EndGlobalSection
 EndGlobal
