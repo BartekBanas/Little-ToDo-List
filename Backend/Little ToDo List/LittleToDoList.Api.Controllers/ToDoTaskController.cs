@@ -15,13 +15,13 @@ public class ToDoTaskController : Controller
         _toDoItemService = toDoItemService;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> ReturnAllTasks()
-    {
-        var taskItemDtos = await _toDoItemService.GetAllTodoItemsAsync();
-
-        return Ok(taskItemDtos);
-    }
+    // [HttpGet]
+    // public async Task<IActionResult> ReturnAllTasks()
+    // {
+    //     var taskItemDtos = await _toDoItemService.GetAllTodoItemsAsync();
+    //
+    //     return Ok(taskItemDtos);
+    // }
 
     [HttpGet("{taskId:int}")]
     public async Task<IActionResult> ReturnSpecificTask([FromRoute] int taskId)
@@ -56,9 +56,9 @@ public class ToDoTaskController : Controller
     }
     
     [HttpGet]
-    public IActionResult GetTasks([FromQuery]int pageSize = 10, [FromQuery]int pageNumber = 0)
+    public async Task<IActionResult> GetTasks([FromQuery]int pageSize = 10, [FromQuery]int pageNumber = 0)
     {
-        var tasks = _toDoItemService.GetTasks(pageSize, pageNumber);
+        var tasks = await _toDoItemService.GetTasks(pageSize, pageNumber);
         return Ok(tasks);
     }
 }
