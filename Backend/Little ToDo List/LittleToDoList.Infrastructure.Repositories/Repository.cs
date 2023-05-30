@@ -31,9 +31,9 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         return entity;
     }
     
-    public virtual async Task<TEntity> GetOneRequiredAsync(params object[] ids)
+    public virtual async Task<TEntity> GetOneRequiredAsync(int id)
     {
-        var entity = await GetOneAsync(ids);
+        var entity = await GetOneAsync(id);
 
         if (entity == null)
             throw new ItemNotFoundErrorException(); 
