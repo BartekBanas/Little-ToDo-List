@@ -15,14 +15,6 @@ public class ToDoTaskController : Controller
         _toDoItemService = toDoItemService;
     }
 
-    // [HttpGet]
-    // public async Task<IActionResult> ReturnAllTasks()
-    // {
-    //     var taskItemDtos = await _toDoItemService.GetAllTodoItemsAsync();
-    //
-    //     return Ok(taskItemDtos);
-    // }
-
     [HttpGet("{taskId:int}")]
     public async Task<IActionResult> ReturnSpecificTask([FromRoute] int taskId)
     {
