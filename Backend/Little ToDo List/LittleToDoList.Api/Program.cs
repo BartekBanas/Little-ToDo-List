@@ -32,7 +32,7 @@ services.AddDbContext<LittleTodoListDbContext>(contextOptionsBuilder =>
 
 services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
-services.AddScoped<IRepository<TaskItem>,     Repository<TaskItem,  LittleTodoListDbContext>>();
+services.AddScoped<IRepository<ToDo>,     Repository<ToDo,  LittleTodoListDbContext>>();
 
 services.AddScoped<IToDoItemService, ToDoItemService>();
 

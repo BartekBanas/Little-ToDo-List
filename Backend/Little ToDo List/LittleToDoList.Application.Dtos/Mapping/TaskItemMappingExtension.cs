@@ -4,9 +4,9 @@ namespace LittleToDoList.Application.Dto.Mapping;
 
 public static class TaskItemMappingExtension
 {
-    public static TaskItemDto ToDto(this TaskItem entity)
+    public static ToDoItemDto ToDto(this ToDo entity)
     {
-        return new TaskItemDto(entity.Id, entity.Name, entity.CreationDate)
+        return new ToDoItemDto(entity.Id, entity.Name, entity.CreationDate)
         {
             CompletionDate = entity.CompletionDate,
             Description = entity.Description,

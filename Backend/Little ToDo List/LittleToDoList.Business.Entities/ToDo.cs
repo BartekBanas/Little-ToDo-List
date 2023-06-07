@@ -2,7 +2,7 @@
 
 namespace LittleToDoList.Business.Entities;
 
-public class TaskItem : Entity
+public class ToDo : Entity
 {
     public int Id { get; set; }
     
@@ -15,19 +15,19 @@ public class TaskItem : Entity
     
     public bool IsDone { get; set; }
 
-    private TaskItem()
+    private ToDo()
     {
     }
 
-    private TaskItem(string name, string? description)
+    private ToDo(string name, string? description)
     {
         Name = name;
         Description = description;
         CreationDate = DateTime.Now;
     }
 
-    public static TaskItem CreateInstance(string name, string? description)
+    public static ToDo CreateInstance(string name, string? description)
     {
-        return new TaskItem(name, description);
+        return new ToDo(name, description);
     }
 }

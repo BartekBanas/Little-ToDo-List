@@ -24,9 +24,9 @@ public class ToDoTaskController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateTask([FromBody] TaskCreateDto taskCreateDto)
+    public async Task<IActionResult> CreateTask([FromBody] ToDoCreateDto toDoCreateDto)
     {
-        await _toDoItemService.CreateTodoItem(taskCreateDto);
+        await _toDoItemService.CreateTodoItem(toDoCreateDto);
 
         return Ok();
     }
@@ -40,7 +40,7 @@ public class ToDoTaskController : Controller
     }
 
     [HttpPut("{taskId:int}")]
-    public async Task<IActionResult> UpdateTask([FromRoute] int taskId, [FromBody] TaskUpdateDto updateDto)
+    public async Task<IActionResult> UpdateTask([FromRoute] int taskId, [FromBody] ToDoUpdateDto updateDto)
     {
         var updatedItem = await _toDoItemService.UpdateTaskItemAsync(taskId, updateDto);
 

@@ -9,46 +9,46 @@ namespace LittleToDoList.Application.Services;
 
 public interface IToDoItemService
 {
-    Task<TaskItem> GetTodoItemAsync(int todoItemId);
-    Task<ICollection<TaskItemDto>> GetAllTodoItemsAsync();
-    Task CreateTodoItem(TaskCreateDto dto);
-    Task<TaskItemDto> UpdateTaskItemAsync(int id, TaskUpdateDto updateDto);
+    Task<ToDo> GetTodoItemAsync(int todoItemId);
+    Task<ICollection<ToDoItemDto>> GetAllTodoItemsAsync();
+    Task CreateTodoItem(ToDoCreateDto dto);
+    Task<ToDoItemDto> UpdateTaskItemAsync(int id, ToDoUpdateDto updateDto);
     Task DeleteTodoItem(int todoItemId);
-    Task<IEnumerable<TaskItemDto>> GetTasks(int pageSize, int pageNumber);
+    Task<IEnumerable<ToDoItemDto>> GetTasks(int pageSize, int pageNumber);
 }
 
 public class ToDoItemService : IToDoItemService
 {
-    private readonly IRepository<TaskItem> _taskRepository;
+    private readonly IRepository<ToDo> _taskRepository;
     private readonly IMapper _mapper;
 
-    public ToDoItemService(IRepository<TaskItem> taskRepository, IMapper mapper)
+    public ToDoItemService(IRepository<ToDo> taskRepository, IMapper mapper)
     {
         _taskRepository = taskRepository;
         _mapper = mapper;
     }
 
-    public async Task<TaskItem> GetTodoItemAsync(int todoItemId)
+    public async Task<ToDo> GetTodoItemAsync(int todoItemId)
     {
         var taskItem = await _taskRepository.GetOneAsync(todoItemId);
 
-        var dto = _mapper.Map<TaskItem>(taskItem);
+        var dto = _mapper.Map<ToDo>(taskItem);
 
         return dto;
     }
     
-    public async Task<ICollection<TaskItemDto>> GetAllTodoItemsAsync()
+    public async Task<ICollection<ToDoItemDto>> GetAllTodoItemsAsync()
     {
         var taskItems = await _taskRepository.GetAllAsync();
 
-        var dtos = _mapper.Map<ICollection<TaskItemDto>>(taskItems);
+        var dtos = _mapper.Map<ICollection<ToDoItemDto>>(taskItems);
 
         return dtos;
     }
 
-    public async Task CreateTodoItem(TaskCreateDto dto)
+    public async Task CreateTodoItem(ToDoCreateDto dto)
     {
-        var newTodoTask = TaskItem.CreateInstance(
+        var newTodoTask = ToDo.CreateInstance(
             name: dto.Name,
             description: dto.Description
         );
@@ -60,7 +60,7 @@ public class ToDoItemService : IToDoItemService
         await _taskRepository.SaveChangesAsync();
     }
     
-    public async Task<TaskItemDto> UpdateTaskItemAsync(int id, TaskUpdateDto updateDto)
+    public async Task<ToDoItemDto> UpdateTaskItemAsync(int id, ToDoUpdateDto updateDto)
     {
         var entity = await _taskRepository.UpdateAsync(updateDto, id);
 
@@ -78,7 +78,7 @@ public class ToDoItemService : IToDoItemService
         await _taskRepository.SaveChangesAsync();
     }
     
-    public async Task<IEnumerable<TaskItemDto>> GetTasks(int pageSize, int pageNumber)
+    public async Task<IEnumerable<ToDoItemDto>> GetTasks(int pageSize, int pageNumber)
     {
         var pagedEntities = await _taskRepository.GetPagedAsync(pageSize, pageNumber);
 
