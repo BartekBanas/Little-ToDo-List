@@ -30,7 +30,7 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         return entity;
     }
     
-    public virtual async Task<TEntity> GetOneRequiredAsync(int id)
+    public virtual async Task<TEntity> GetOneRequiredAsync(object id)
     {
         var entity = await GetOneAsync(id);
 
