@@ -10,4 +10,15 @@ public class User : Entity
     public string Name { get; set; } = null!;
     public string PasswordHash { get; set; } = null!;
     public DateTime CreationDate { get; set; }
+
+    public User()
+    {
+    }
+
+    public User(Guid id, string name, string passwordHash)
+    {
+        Id = id;
+        Name = name;
+        PasswordHash = passwordHash;
+    }
 }
