@@ -33,8 +33,10 @@ services.AddDbContext<LittleTodoListDbContext>(contextOptionsBuilder =>
 services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
 services.AddScoped<IRepository<ToDo>,     Repository<ToDo,  LittleTodoListDbContext>>();
+services.AddScoped<IRepository<User>,     Repository<User,  LittleTodoListDbContext>>();
 
 services.AddScoped<IToDoItemService, ToDoItemService>();
+services.AddScoped<IUserService, UserService>();
 
 services.AddMediatR(cfg =>
 {
