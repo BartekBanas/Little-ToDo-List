@@ -10,9 +10,9 @@ public interface IRepository<TEntity> : IRepository where TEntity : IEntity
 
     Task<TEntity> CreateOneAsync(TEntity entity);
     
-    Task<TEntity> UpdateAsync(object update, int id);
+    Task<TEntity> UpdateAsync(object update, object id);
     
-    Task DeleteOneAsync(int keys);
+    Task DeleteOneAsync(object keys);
     
     Task SaveChangesAsync();
     Task<IEnumerable<TEntity>> GetPagedAsync(int pageSize, int pageNumber);
