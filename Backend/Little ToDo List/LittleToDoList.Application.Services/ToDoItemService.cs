@@ -65,7 +65,7 @@ public class ToDoItemService : IToDoItemService
         var entity = await _taskRepository.UpdateAsync(updateDto, id);
 
         var updatedDto = entity.ToDto();
-;
+        
         await _taskRepository.SaveChangesAsync();
         
         return updatedDto;
