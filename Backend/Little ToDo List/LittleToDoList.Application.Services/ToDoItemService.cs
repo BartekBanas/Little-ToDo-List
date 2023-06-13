@@ -50,7 +50,8 @@ public class ToDoItemService : IToDoItemService
     {
         var newTodoTask = ToDo.CreateInstance(
             name: dto.Name,
-            description: dto.Description
+            description: dto.Description,
+            assignedUserId: dto.AssignedUserId
         );
 
         await _taskRepository.CreateOneAsync(newTodoTask);

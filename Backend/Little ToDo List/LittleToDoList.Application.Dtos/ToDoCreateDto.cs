@@ -4,6 +4,7 @@ public class ToDoCreateDto
 {
     public string Name { get; set; }
     public string? Description { get; set; }
+    public Guid AssignedUserId  { get; set; }
 
     public ToDoCreateDto()
     {
