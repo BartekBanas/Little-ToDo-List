@@ -16,9 +16,8 @@ public static class UserMappingExtension
     
     public static User ToEntity(this UserCreateDto dto)
     {
-        return new User(dto.Id, dto.Name, dto.PasswordHash)
+        return new User(dto.Name, dto.PasswordHash)
         {
-            Id = dto.Id,
             Name = dto.Name,
             PasswordHash = dto.PasswordHash
         };

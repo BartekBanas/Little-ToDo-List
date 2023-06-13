@@ -15,9 +15,8 @@ public class User : Entity
     {
     }
 
-    public User(Guid id, string name, string passwordHash)
+    public User(string name, string passwordHash)
     {
-        Id = id;
         Name = name;
         PasswordHash = passwordHash;
     }
