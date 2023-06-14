@@ -15,8 +15,10 @@ public class LittleTodoListDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ToDo>().HasKey(taskItem => taskItem.Id);
-        modelBuilder.Entity<ToDo>().Property(taskItem => taskItem.Name).HasMaxLength(64);
+        var todoBuilder = modelBuilder.Entity<ToDo>();
+        
+        todoBuilder.HasKey(taskItem => taskItem.Id);
+        todoBuilder.Property(taskItem => taskItem.Name).HasMaxLength(64);
         
         base.OnModelCreating(modelBuilder);
     }
