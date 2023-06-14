@@ -14,8 +14,10 @@ public class ToDo : Entity
     public string? Description { get; set; }
     public bool IsDone { get; set; }
     
-    [ForeignKey(nameof(User))]
+    [ForeignKey(nameof(AssignedUser))]
     public Guid AssignedUserId  { get; set; }
+
+    public virtual User AssignedUser { get; set; } = null!;
 
     private ToDo()
     {
