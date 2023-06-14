@@ -30,6 +30,14 @@ public class UserController : Controller
 
         return Ok(user);
     }
+    
+    [HttpGet("{userId:Guid}/tasks")]
+    public async Task<IActionResult> GetUsersTasks([FromRoute] Guid userId)
+    {
+        var toDoDtos = await _userService.GetTasks(userId);
+
+        return Ok(toDoDtos);
+    }
 
     [HttpPost]
     public async Task<ActionResult> CreateUser([FromBody] UserCreateDto userDto)
