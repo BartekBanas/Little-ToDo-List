@@ -7,6 +7,7 @@ namespace LittleToDoList.Infrastructure;
 public class LittleTodoListDbContext : DbContext
 {
     public DbSet<ToDo> Todos { get; set; } = null!;
+    public DbSet<User> Users { get; set; } = null!;
     
     public LittleTodoListDbContext(DbContextOptions options) : base(options)
     {
