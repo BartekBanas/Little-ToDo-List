@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq.Expressions;
+using AutoMapper;
 using LittleToDoList.Application.Dto;
 using LittleToDoList.Application.Dto.Mapping;
 using LittleToDoList.Business.Abstractions;
@@ -15,6 +16,7 @@ public interface IToDoItemService
     Task<ToDoItemDto> UpdateTaskItemAsync(int id, ToDoUpdateDto updateDto);
     Task DeleteTodoItem(int todoItemId);
     Task<IEnumerable<ToDoItemDto>> GetTasks(int pageSize, int pageNumber);
+    Task<IEnumerable<ToDoItemDto>> GetTasks(Guid accountId);
 }
 
 public class ToDoItemService : IToDoItemService
@@ -84,5 +86,17 @@ public class ToDoItemService : IToDoItemService
         var pagedEntities = await _taskRepository.GetPagedAsync(pageSize, pageNumber);
 
         return pagedEntities.Select(taskItem => taskItem.ToDto());
+    }
+
+    public async Task<IEnumerable<ToDoItemDto>> GetTasks(Guid accountId)
+    {
+        Expression<Func<ToDo, bool>> filer = toDo => toDo.AssignedUserId.Equals(accountId);
+        
+        var toDos = await _taskRepository
+            .GetAsync(filer, null, nameof(ToDo.AssignedUser));
+
+        var dtos = _mapper.Map<IEnumerable<ToDoItemDto>>(toDos);
+
+        return dtos;
     }
 }

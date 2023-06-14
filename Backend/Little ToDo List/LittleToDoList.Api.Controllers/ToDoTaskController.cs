@@ -47,17 +47,18 @@ public class ToDoTaskController : Controller
         return Ok(updatedItem);
     }
     
-    [HttpGet]
-    public async Task<IActionResult> GetTasks([FromQuery]int pageSize = 10, [FromQuery]int pageNumber = 0)
-    {
-        var tasks = await _toDoItemService.GetTasks(pageSize, pageNumber);
-        return Ok(tasks);
-    }
+    // [HttpGet]
+    // public async Task<IActionResult> GetTasks([FromQuery]int pageSize = 10, [FromQuery]int pageNumber = 0)
+    // {
+    //     var tasks = await _toDoItemService.GetTasks(pageSize, pageNumber);
+    //     return Ok(tasks);
+    // }
     
     [HttpGet]
     public async Task<IActionResult> GerUsersTasks([FromQuery]Guid accountId)
     {
-
-        return Ok();
+        var toDoDTOs = await _toDoItemService.GetTasks(accountId);
+        
+        return Ok(toDoDTOs);
     }
 }
