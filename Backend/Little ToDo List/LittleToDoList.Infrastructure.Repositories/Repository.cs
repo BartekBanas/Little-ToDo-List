@@ -1,4 +1,5 @@
-﻿using LittleToDoList.Business.Abstractions;
+﻿using System.Linq.Expressions;
+using LittleToDoList.Business.Abstractions;
 using LittleToDoList.Infrastructure.Errors;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,33 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         var entities = await _dbSet.ToListAsync();
 
         return entities;
+    }
+    
+    public virtual async Task<IEnumerable<TEntity>> GetAsync(
+        Expression<Func<TEntity, bool>>? filter = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        params string[] includeProperties)
+    {
+        IQueryable<TEntity> query = _dbSet;
+
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+
+        foreach (var includeProperty in includeProperties)
+        {
+            query = query.Include(includeProperty);
+        }
+
+        if (orderBy != null)
+        {
+            return await orderBy(query).ToListAsync();
+        }
+        else
+        {
+            return await query.ToListAsync();
+        }
     }
 
     public virtual async Task<TEntity> CreateOneAsync(TEntity entity)
