@@ -6,11 +6,11 @@ namespace LittleToDoList.Api.Controllers;
 
 [ApiController]
 [Route("api/task")]
-public class ToDoTaskController : Controller
+public class ToDoController : Controller
 {
     private readonly IToDoItemService _toDoItemService;
 
-    public ToDoTaskController(IToDoItemService toDoItemService)
+    public ToDoController(IToDoItemService toDoItemService)
     {
         _toDoItemService = toDoItemService;
     }

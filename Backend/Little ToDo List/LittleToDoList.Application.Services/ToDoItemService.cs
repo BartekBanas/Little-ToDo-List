@@ -11,12 +11,12 @@ namespace LittleToDoList.Application.Services;
 public interface IToDoItemService
 {
     Task<ToDo> GetTodoItemAsync(int todoItemId);
-    Task<ICollection<ToDoItemDto>> GetAllTodoItemsAsync();
+    Task<ICollection<ToDoDto>> GetAllTodoItemsAsync();
     Task CreateTodoItem(ToDoCreateDto dto);
-    Task<ToDoItemDto> UpdateTaskItemAsync(int id, ToDoUpdateDto updateDto);
+    Task<ToDoDto> UpdateTaskItemAsync(int id, ToDoUpdateDto updateDto);
     Task DeleteTodoItem(int todoItemId);
-    Task<IEnumerable<ToDoItemDto>> GetTasks(int pageSize, int pageNumber);
-    Task<IEnumerable<ToDoItemDto>> GetTasks(Guid accountId);
+    Task<IEnumerable<ToDoDto>> GetTasks(int pageSize, int pageNumber);
+    Task<IEnumerable<ToDoDto>> GetTasks(Guid accountId);
 }
 
 public class ToDoItemService : IToDoItemService
@@ -39,11 +39,11 @@ public class ToDoItemService : IToDoItemService
         return dto;
     }
     
-    public async Task<ICollection<ToDoItemDto>> GetAllTodoItemsAsync()
+    public async Task<ICollection<ToDoDto>> GetAllTodoItemsAsync()
     {
         var taskItems = await _taskRepository.GetAllAsync();
 
-        var dtos = _mapper.Map<ICollection<ToDoItemDto>>(taskItems);
+        var dtos = _mapper.Map<ICollection<ToDoDto>>(taskItems);
 
         return dtos;
     }
@@ -63,7 +63,7 @@ public class ToDoItemService : IToDoItemService
         await _taskRepository.SaveChangesAsync();
     }
     
-    public async Task<ToDoItemDto> UpdateTaskItemAsync(int id, ToDoUpdateDto updateDto)
+    public async Task<ToDoDto> UpdateTaskItemAsync(int id, ToDoUpdateDto updateDto)
     {
         var entity = await _taskRepository.UpdateAsync(updateDto, id);
 
@@ -81,21 +81,21 @@ public class ToDoItemService : IToDoItemService
         await _taskRepository.SaveChangesAsync();
     }
     
-    public async Task<IEnumerable<ToDoItemDto>> GetTasks(int pageSize, int pageNumber)
+    public async Task<IEnumerable<ToDoDto>> GetTasks(int pageSize, int pageNumber)
     {
         var pagedEntities = await _taskRepository.GetPagedAsync(pageSize, pageNumber);
 
         return pagedEntities.Select(taskItem => taskItem.ToDto());
     }
 
-    public async Task<IEnumerable<ToDoItemDto>> GetTasks(Guid accountId)
+    public async Task<IEnumerable<ToDoDto>> GetTasks(Guid accountId)
     {
         Expression<Func<ToDo, bool>> filer = toDo => toDo.AssignedUserId.Equals(accountId);
         
         var toDos = await _taskRepository
             .GetAsync(filer, null, nameof(ToDo.AssignedUser));
 
-        var dtos = _mapper.Map<IEnumerable<ToDoItemDto>>(toDos);
+        var dtos = _mapper.Map<IEnumerable<ToDoDto>>(toDos);
 
         return dtos;
     }

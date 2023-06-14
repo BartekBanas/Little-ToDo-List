@@ -16,7 +16,7 @@ var configuration = builder.Configuration;
 var services = builder.Services;
 
 services.AddControllers();
-services.AddControllers().AddApplicationPart(typeof(ToDoTaskController).Assembly);
+services.AddControllers().AddApplicationPart(typeof(ToDoController).Assembly);
 services.AddControllers().AddApplicationPart(typeof(UserController).Assembly);
 
 services.AddEndpointsApiExplorer();
