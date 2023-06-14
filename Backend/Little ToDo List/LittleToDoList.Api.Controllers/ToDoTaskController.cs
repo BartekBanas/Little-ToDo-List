@@ -53,4 +53,11 @@ public class ToDoTaskController : Controller
         var tasks = await _toDoItemService.GetTasks(pageSize, pageNumber);
         return Ok(tasks);
     }
+    
+    [HttpGet]
+    public async Task<IActionResult> GerUsersTasks([FromQuery]Guid accountId)
+    {
+
+        return Ok();
+    }
 }
