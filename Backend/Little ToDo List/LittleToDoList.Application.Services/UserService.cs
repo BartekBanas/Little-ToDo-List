@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq.Expressions;
+using AutoMapper;
 using LittleToDoList.Application.Dto;
 using LittleToDoList.Application.Dto.Mapping;
 using LittleToDoList.Business.Abstractions;
@@ -9,6 +10,7 @@ namespace LittleToDoList.Application.Services;
 public interface IUserService
 {
     Task<UserDto> GetUserAsync(Guid userId);
+    Task<IEnumerable<ToDoDto>> GetTasks(Guid accountId);
     Task<ICollection<UserDto>> GetAllUsersAsync();
     Task CreateUser(UserCreateDto dto);
     Task<UserDto> UpdateUserAsync(Guid id, UserUpdateDto updateDto);
@@ -18,11 +20,14 @@ public interface IUserService
 public class UserService : IUserService
 {
     private readonly IRepository<User> _userRepository;
+    private readonly IRepository<ToDo> _taskRepository;
+    
     private readonly IMapper _mapper;
 
-    public UserService(IRepository<User> userRepository, IMapper mapper)
+    public UserService(IRepository<User> userRepository, IRepository<ToDo> taskRepository, IMapper mapper)
     {
         _userRepository = userRepository;
+        _taskRepository = taskRepository;
         _mapper = mapper;
     }
 
@@ -33,6 +38,18 @@ public class UserService : IUserService
         var dto = user.ToDto();
 
         return dto;
+    }
+
+    public async Task<IEnumerable<ToDoDto>> GetTasks(Guid accountId)
+    {
+        Expression<Func<ToDo, bool>> filer = toDo => toDo.AssignedUserId.Equals(accountId);
+        
+        var toDos = await _taskRepository
+            .GetAsync(filer, null, nameof(ToDo.AssignedUser));
+
+        var dtos = _mapper.Map<IEnumerable<ToDoDto>>(toDos);
+
+        return dtos;
     }
 
     public async Task<ICollection<UserDto>> GetAllUsersAsync()
