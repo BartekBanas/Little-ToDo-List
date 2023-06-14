@@ -1,20 +1,21 @@
 ﻿namespace LittleToDoList.Application.Dto;
 
-public class TaskCreateDto
+public class ToDoCreateDto
 {
     public string Name { get; set; }
     public string? Description { get; set; }
+    public Guid AssignedUserId  { get; set; }
 
-    public TaskCreateDto()
+    public ToDoCreateDto()
     {
     }
 
-    public TaskCreateDto(string name)
+    public ToDoCreateDto(string name)
     {
         Name = name;
     }
 
-    public TaskCreateDto(string name, string? description)
+    public ToDoCreateDto(string name, string? description)
     {
         Name = name;
         Description = description;

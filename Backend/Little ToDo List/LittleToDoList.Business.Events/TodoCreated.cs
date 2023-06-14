@@ -3,11 +3,11 @@ using LittleToDoList.Business.Entities;
 
 namespace LittleToDoList.Business.Events;
 
-public class TodoCreated : DomainEvent<TaskItem>
+public class TodoCreated : DomainEvent<ToDo>
 {
-    public TaskItem Entity { get; set; }
+    public ToDo Entity { get; set; }
     
-    public TodoCreated(TaskItem entity)
+    public TodoCreated(ToDo entity)
     {
         Entity = entity;
     }

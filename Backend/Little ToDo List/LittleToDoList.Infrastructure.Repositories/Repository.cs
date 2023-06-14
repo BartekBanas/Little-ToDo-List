@@ -1,4 +1,5 @@
-﻿using LittleToDoList.Business.Abstractions;
+﻿using System.Linq.Expressions;
+using LittleToDoList.Business.Abstractions;
 using LittleToDoList.Infrastructure.Errors;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +31,7 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         return entity;
     }
     
-    public virtual async Task<TEntity> GetOneRequiredAsync(int id)
+    public virtual async Task<TEntity> GetOneRequiredAsync(object id)
     {
         var entity = await GetOneAsync(id);
 
@@ -46,6 +47,33 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
 
         return entities;
     }
+    
+    public virtual async Task<IEnumerable<TEntity>> GetAsync(
+        Expression<Func<TEntity, bool>>? filter = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        params string[] includeProperties)
+    {
+        IQueryable<TEntity> query = _dbSet;
+
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+
+        foreach (var includeProperty in includeProperties)
+        {
+            query = query.Include(includeProperty);
+        }
+
+        if (orderBy != null)
+        {
+            return await orderBy(query).ToListAsync();
+        }
+        else
+        {
+            return await query.ToListAsync();
+        }
+    }
 
     public virtual async Task<TEntity> CreateOneAsync(TEntity entity)
     {
@@ -54,7 +82,7 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         return await Task.FromResult(entity);
     }
     
-    public virtual async Task<TEntity> UpdateAsync(object update, int id)
+    public virtual async Task<TEntity> UpdateAsync(object update, object id)
     {
         var entity = await GetOneRequiredAsync(id);
 
@@ -64,7 +92,7 @@ public class Repository<TEntity, TDbContext> : IRepository<TEntity>
         return entity;
     }
     
-    public virtual async Task DeleteOneAsync(int keys)
+    public virtual async Task DeleteOneAsync(object keys)
     {
         var entity = await GetOneAsync(keys);
 

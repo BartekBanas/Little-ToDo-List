@@ -16,7 +16,9 @@ var configuration = builder.Configuration;
 var services = builder.Services;
 
 services.AddControllers();
-services.AddControllers().AddApplicationPart(typeof(ToDoTaskController).Assembly);
+services.AddControllers().AddApplicationPart(typeof(ToDoController).Assembly);
+services.AddControllers().AddApplicationPart(typeof(UserController).Assembly);
+
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
@@ -32,9 +34,11 @@ services.AddDbContext<LittleTodoListDbContext>(contextOptionsBuilder =>
 
 services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
-services.AddScoped<IRepository<TaskItem>,     Repository<TaskItem,  LittleTodoListDbContext>>();
+services.AddScoped<IRepository<ToDo>,     Repository<ToDo,  LittleTodoListDbContext>>();
+services.AddScoped<IRepository<User>,     Repository<User,  LittleTodoListDbContext>>();
 
 services.AddScoped<IToDoItemService, ToDoItemService>();
+services.AddScoped<IUserService, UserService>();
 
 services.AddMediatR(cfg =>
 {

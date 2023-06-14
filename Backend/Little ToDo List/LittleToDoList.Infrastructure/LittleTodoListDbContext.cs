@@ -6,7 +6,8 @@ namespace LittleToDoList.Infrastructure;
 
 public class LittleTodoListDbContext : DbContext
 {
-    public DbSet<TaskItem> Todos { get; set; } = null!;
+    public DbSet<ToDo> Todos { get; set; } = null!;
+    public DbSet<User> Users { get; set; } = null!;
     
     public LittleTodoListDbContext(DbContextOptions options) : base(options)
     {
@@ -14,8 +15,10 @@ public class LittleTodoListDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<TaskItem>().HasKey(taskItem => taskItem.Id);
-        modelBuilder.Entity<TaskItem>().Property(taskItem => taskItem.Name).HasMaxLength(64);
+        var todoBuilder = modelBuilder.Entity<ToDo>();
+        
+        todoBuilder.HasKey(taskItem => taskItem.Id);
+        todoBuilder.Property(taskItem => taskItem.Name).HasMaxLength(64);
         
         base.OnModelCreating(modelBuilder);
     }

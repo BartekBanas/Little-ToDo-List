@@ -8,6 +8,7 @@ public class AutoMapperProfile : Profile
 {
     public AutoMapperProfile()
     {
-        CreateMap<TaskItem, TaskItemDto>();
+        CreateMap<ToDo, ToDoDto>();
+        CreateMap<User, UserDto>();
     }
 }

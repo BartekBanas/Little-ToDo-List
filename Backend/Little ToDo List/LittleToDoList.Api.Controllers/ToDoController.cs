@@ -6,11 +6,11 @@ namespace LittleToDoList.Api.Controllers;
 
 [ApiController]
 [Route("api/task")]
-public class ToDoTaskController : Controller
+public class ToDoController : Controller
 {
     private readonly IToDoItemService _toDoItemService;
 
-    public ToDoTaskController(IToDoItemService toDoItemService)
+    public ToDoController(IToDoItemService toDoItemService)
     {
         _toDoItemService = toDoItemService;
     }
@@ -24,9 +24,9 @@ public class ToDoTaskController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateTask([FromBody] TaskCreateDto taskCreateDto)
+    public async Task<IActionResult> CreateTask([FromBody] ToDoCreateDto toDoCreateDto)
     {
-        await _toDoItemService.CreateTodoItem(taskCreateDto);
+        await _toDoItemService.CreateTodoItem(toDoCreateDto);
 
         return Ok();
     }
@@ -40,7 +40,7 @@ public class ToDoTaskController : Controller
     }
 
     [HttpPut("{taskId:int}")]
-    public async Task<IActionResult> UpdateTask([FromRoute] int taskId, [FromBody] TaskUpdateDto updateDto)
+    public async Task<IActionResult> UpdateTask([FromRoute] int taskId, [FromBody] ToDoUpdateDto updateDto)
     {
         var updatedItem = await _toDoItemService.UpdateTaskItemAsync(taskId, updateDto);
 
@@ -51,6 +51,7 @@ public class ToDoTaskController : Controller
     public async Task<IActionResult> GetTasks([FromQuery]int pageSize = 10, [FromQuery]int pageNumber = 0)
     {
         var tasks = await _toDoItemService.GetTasks(pageSize, pageNumber);
+        
         return Ok(tasks);
     }
 }

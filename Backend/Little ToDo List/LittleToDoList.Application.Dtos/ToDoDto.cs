@@ -1,6 +1,6 @@
 ﻿namespace LittleToDoList.Application.Dto;
 
-public class TaskItemDto
+public class ToDoDto
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -8,11 +8,13 @@ public class TaskItemDto
     public DateTime? CompletionDate { get; set; }
     public string? Description { get; set; }
     public bool IsDone { get; set; }
+    public Guid AssignedUserId  { get; set; }
 
-    public TaskItemDto(int id, string name, DateTime creationDate)
+    public ToDoDto(int id, string name, DateTime creationDate, Guid assignedUserId)
     {
         Id = id;
         Name = name;
         CreationDate = creationDate;
+        AssignedUserId = assignedUserId;
     }
 }
