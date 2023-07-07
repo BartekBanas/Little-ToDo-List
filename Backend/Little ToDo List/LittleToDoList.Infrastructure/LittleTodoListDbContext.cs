@@ -20,6 +20,21 @@ public class LittleTodoListDbContext : DbContext
         todoBuilder.HasKey(taskItem => taskItem.Id);
         todoBuilder.Property(taskItem => taskItem.Name).HasMaxLength(64);
         
+        
+        var userFriendshipBuilder = modelBuilder.Entity<UserFriendship>();
+        
+        userFriendshipBuilder.HasKey(friendship => friendship.Id);
+
+        userFriendshipBuilder
+            .HasOne(friendship => friendship.FirstUser)
+            .WithMany()
+            .HasForeignKey(friendship => friendship.FirstUserId);
+
+        userFriendshipBuilder
+            .HasOne(friendship => friendship.SecondUser)
+            .WithMany()
+            .HasForeignKey(friendship => friendship.SecondUserId);
+
         base.OnModelCreating(modelBuilder);
     }
 
