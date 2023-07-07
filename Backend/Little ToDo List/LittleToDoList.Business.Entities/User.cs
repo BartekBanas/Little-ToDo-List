@@ -19,5 +19,6 @@ public class User : Entity
     {
         Name = name;
         PasswordHash = passwordHash;
+        CreationDate = DateTime.Now;
     }
 }
