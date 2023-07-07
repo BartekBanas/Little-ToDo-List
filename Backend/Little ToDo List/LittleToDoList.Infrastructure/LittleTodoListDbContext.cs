@@ -17,8 +17,8 @@ public class LittleTodoListDbContext : DbContext
     {
         var todoBuilder = modelBuilder.Entity<ToDo>();
         
-        todoBuilder.HasKey(taskItem => taskItem.Id);
-        todoBuilder.Property(taskItem => taskItem.Name).HasMaxLength(64);
+        todoBuilder.HasKey(toDo => toDo.Id);
+        todoBuilder.Property(toDo => toDo.Name).HasMaxLength(64);
         
         
         var userFriendshipBuilder = modelBuilder.Entity<UserFriendship>();
