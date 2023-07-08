@@ -40,6 +40,7 @@ services.AddScoped<IRepository<UserFriendship>, Repository<UserFriendship, Littl
 
 services.AddScoped<IToDoItemService, ToDoItemService>();
 services.AddScoped<IUserService, UserService>();
+services.AddScoped<IFriendshipService, FriendshipService>();
 
 services.AddMediatR(cfg =>
 {
