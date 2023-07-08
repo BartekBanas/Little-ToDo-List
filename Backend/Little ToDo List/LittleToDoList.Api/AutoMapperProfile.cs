@@ -10,5 +10,6 @@ public class AutoMapperProfile : Profile
     {
         CreateMap<ToDo, ToDoDto>();
         CreateMap<User, UserDto>();
+        CreateMap<UserFriendship, FriendshipDto>();
     }
 }

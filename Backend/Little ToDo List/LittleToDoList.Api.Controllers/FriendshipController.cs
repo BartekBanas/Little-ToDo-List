@@ -21,4 +21,12 @@ public class FriendshipController : Controller
 
         return Ok();
     }
+    
+    [HttpGet("{accountId:Guid}/list")]
+    public async Task<IActionResult> GetFriendships([FromRoute] Guid accountId)
+    {
+        var friendships = await _friendshipService.GetFriendships(accountId);
+
+        return Ok(friendships);
+    }
 }
