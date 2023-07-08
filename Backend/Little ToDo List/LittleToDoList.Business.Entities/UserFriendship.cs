@@ -13,4 +13,15 @@ public class UserFriendship : Entity
     public virtual User SecondUser { get; set; } = null!;
 
     public DateTime DateCreated { get; set; }
+
+    public UserFriendship(Guid firstUserId, Guid secondUserId)
+    {
+        FirstUserId = firstUserId;
+        SecondUserId = secondUserId;
+    }
+
+    public static UserFriendship CreateInstance(Guid firstUserId, Guid secondUserId)
+    {
+        return new UserFriendship(firstUserId, secondUserId);
+    }
 }
