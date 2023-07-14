@@ -18,6 +18,8 @@ public class UserFriendship : Entity
     {
         FirstUserId = firstUserId;
         SecondUserId = secondUserId;
+        
+        DateCreated = DateTime.Now;
     }
 
     public static UserFriendship CreateInstance(Guid firstUserId, Guid secondUserId)
