@@ -50,6 +50,8 @@ services.AddMediatR(cfg =>
 // ============= RUN =============
 var app = builder.Build();
 
+app.Services.CreateScope().ServiceProvider.GetRequiredService<LittleTodoListDbContext>().Database.EnsureCreated();
+
 app.UseStaticFiles();
 
 // Configure the HTTP request pipeline.
