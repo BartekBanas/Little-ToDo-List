@@ -37,7 +37,7 @@ public class FriendshipService : IFriendshipService
     public async Task<IEnumerable<FriendshipDto>> GetFriendships(Guid accountId)
     {
         var contacts = await _friendshipRepository
-            .GetAsync(x => x.FirstUserId == accountId || x.SecondUserId == accountId);
+            .GetAsync(friendship => friendship.FirstUserId == accountId || friendship.SecondUserId == accountId);
 
         var dtos = _mapper.Map<IEnumerable<FriendshipDto>>(contacts);
         
