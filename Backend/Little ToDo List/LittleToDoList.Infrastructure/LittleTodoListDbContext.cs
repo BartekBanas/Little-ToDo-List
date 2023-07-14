@@ -8,6 +8,7 @@ public class LittleTodoListDbContext : DbContext
 {
     public DbSet<ToDo> Todos { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
+    public DbSet<UserFriendship> UserFriendships { get; set; } = null!;
     
     public LittleTodoListDbContext(DbContextOptions options) : base(options)
     {
@@ -17,9 +18,24 @@ public class LittleTodoListDbContext : DbContext
     {
         var todoBuilder = modelBuilder.Entity<ToDo>();
         
-        todoBuilder.HasKey(taskItem => taskItem.Id);
-        todoBuilder.Property(taskItem => taskItem.Name).HasMaxLength(64);
+        todoBuilder.HasKey(toDo => toDo.Id);
+        todoBuilder.Property(toDo => toDo.Name).HasMaxLength(64);
         
+        
+        var userFriendshipBuilder = modelBuilder.Entity<UserFriendship>();
+        
+        userFriendshipBuilder.HasKey(friendship => friendship.Id);
+
+        userFriendshipBuilder
+            .HasOne(friendship => friendship.FirstUser)
+            .WithMany()
+            .HasForeignKey(friendship => friendship.FirstUserId);
+
+        userFriendshipBuilder
+            .HasOne(friendship => friendship.SecondUser)
+            .WithMany()
+            .HasForeignKey(friendship => friendship.SecondUserId);
+
         base.OnModelCreating(modelBuilder);
     }
 

@@ -1,10 +1,10 @@
-using LittleToDoList.Api;
 using Microsoft.EntityFrameworkCore;
-using LittleToDoList.Infrastructure;
+using LittleToDoList.Api;
 using LittleToDoList.Api.Controllers;
 using LittleToDoList.Application.Services;
 using LittleToDoList.Business.Abstractions;
 using LittleToDoList.Business.Entities;
+using LittleToDoList.Infrastructure;
 using LittleToDoList.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,9 +36,11 @@ services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
 services.AddScoped<IRepository<ToDo>,     Repository<ToDo,  LittleTodoListDbContext>>();
 services.AddScoped<IRepository<User>,     Repository<User,  LittleTodoListDbContext>>();
+services.AddScoped<IRepository<UserFriendship>, Repository<UserFriendship, LittleTodoListDbContext>>();
 
 services.AddScoped<IToDoItemService, ToDoItemService>();
 services.AddScoped<IUserService, UserService>();
+services.AddScoped<IFriendshipService, FriendshipService>();
 
 services.AddMediatR(cfg =>
 {
@@ -47,6 +49,8 @@ services.AddMediatR(cfg =>
 
 // ============= RUN =============
 var app = builder.Build();
+
+app.Services.CreateScope().ServiceProvider.GetRequiredService<LittleTodoListDbContext>().Database.EnsureCreated();
 
 app.UseStaticFiles();
 

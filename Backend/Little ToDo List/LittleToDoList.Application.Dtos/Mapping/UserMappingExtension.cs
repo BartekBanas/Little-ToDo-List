@@ -16,10 +16,10 @@ public static class UserMappingExtension
     
     public static User ToEntity(this UserCreateDto dto)
     {
-        return new User(dto.Name, dto.PasswordHash)
+        return new User(dto.Name, dto.Password)
         {
             Name = dto.Name,
-            PasswordHash = dto.PasswordHash
+            Password = dto.Password
         };
     }
 }
