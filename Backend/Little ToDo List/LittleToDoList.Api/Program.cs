@@ -1,10 +1,10 @@
-using LittleToDoList.Api;
 using Microsoft.EntityFrameworkCore;
-using LittleToDoList.Infrastructure;
+using LittleToDoList.Api;
 using LittleToDoList.Api.Controllers;
 using LittleToDoList.Application.Services;
 using LittleToDoList.Business.Abstractions;
 using LittleToDoList.Business.Entities;
+using LittleToDoList.Infrastructure;
 using LittleToDoList.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
