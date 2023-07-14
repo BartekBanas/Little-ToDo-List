@@ -8,17 +8,17 @@ public class User : Entity
     [Key]
     public Guid Id { get; set; }
     public string Name { get; set; } = null!;
-    public string PasswordHash { get; set; } = null!;
+    public string Password { get; set; } = null!;
     public DateTime CreationDate { get; set; }
 
     public User()
     {
     }
 
-    public User(string name, string passwordHash)
+    public User(string name, string password)
     {
         Name = name;
-        PasswordHash = passwordHash;
+        Password = password;
         CreationDate = DateTime.Now;
     }
 }
