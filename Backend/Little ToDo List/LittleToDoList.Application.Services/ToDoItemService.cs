@@ -22,11 +22,13 @@ public interface IToDoItemService
 public class ToDoItemService : IToDoItemService
 {
     private readonly IRepository<ToDo> _taskRepository;
+    private readonly IRepository<User> _userRepository;
     private readonly IMapper _mapper;
 
-    public ToDoItemService(IRepository<ToDo> taskRepository, IMapper mapper)
+    public ToDoItemService(IRepository<ToDo> taskRepository, IRepository<User> userRepository, IMapper mapper)
     {
         _taskRepository = taskRepository;
+        _userRepository = userRepository;
         _mapper = mapper;
     }
 
@@ -50,10 +52,12 @@ public class ToDoItemService : IToDoItemService
 
     public async Task CreateTodoItem(ToDoCreateDto dto)
     {
+        var account = _userRepository.GetOneRequiredAsync(dto.AssignedUserId);
+        
         var newTodoTask = ToDo.CreateInstance(
             name: dto.Name,
             description: dto.Description,
-            assignedUserId: dto.AssignedUserId
+            assignedUserId: account.Result.Id
         );
 
         await _taskRepository.CreateOneAsync(newTodoTask);
